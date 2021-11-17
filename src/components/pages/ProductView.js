@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ProductView = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div>ProductView</div>;
+};
 
-export default ProductView
+export default ProductView;
