@@ -18,6 +18,7 @@ const slice = createSlice({
     },
 
     cartReceived: (cart, action) => {
+      localStorage.setItem('cartId', action.payload.id);
       cart.cartId = action.payload.id;
       cart.content = action.payload;
       cart.loading = false;
@@ -73,6 +74,7 @@ const url = '/cart';
  */
 export const loadCart = () => (dispatch, getState) => {
   const existingCartId = getState().cart.cartId;
+  console.log(existingCartId, 'existingCartId')
 
   if (existingCartId) {
     return dispatch(

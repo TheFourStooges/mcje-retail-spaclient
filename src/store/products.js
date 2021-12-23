@@ -66,22 +66,24 @@ const url = '/product';
  * Dispatch productsRequestFailed on failure
  * @returns
  */
-export const loadProducts = (limit, page) => (dispatch, getState) => {
-  // console.log(limit, page);
-  return dispatch(
-    apiCallBegan({
-      url,
-      params: {
-        limit,
-        page,
-        sortBy: 'updatedAt:desc',
-      },
-      onStart: productsRequested.type,
-      onSuccess: productsReceived.type,
-      onError: productsRequestFailed.type,
-    })
-  );
-};
+export const loadProducts =
+  (limit, page, categoryId, sortBy) => (dispatch, getState) => {
+    // console.log(limit, page);
+    return dispatch(
+      apiCallBegan({
+        url,
+        params: {
+          limit: limit || getState().entities.products.meta.limit,
+          page: page || getState().entities.products.meta.page,
+          sortBy: sortBy || 'updatedAt:desc',
+          categoryId,
+        },
+        onStart: productsRequested.type,
+        onSuccess: productsReceived.type,
+        onError: productsRequestFailed.type,
+      })
+    );
+  };
 
 // export const addProduct = (product) => (dispatch, getState) => {
 //   return dispatch(
