@@ -61,7 +61,7 @@ class App extends React.Component {
           <PrivateRoute path="/shop/:categorySlug" component={ShopPage} />
           <PrivateRoute path="/shop" component={ShopPage} />
           <PrivateRoute path="/product/:productSlug" component={ProductPage} />
-          <PrivateRoute exact path="/checkout" component={CartPreviewPage} />
+          <PrivateRoute exact path="/cart" component={CartPreviewPage} />
         </Switch>
       </div>
     );
