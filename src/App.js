@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
-import CheckoutPage from './pages/checkout/checkout.component';
+import CartPreviewPage from './pages/cart-preview/cart-preview.component';
 import ProductPage from './pages/product/product.component';
 
 import SignInAndSignUp from './pages/sign-in-sign-up/sign-in-sign-up.component';
@@ -61,7 +61,7 @@ class App extends React.Component {
           <PrivateRoute path="/shop/:categorySlug" component={ShopPage} />
           <PrivateRoute path="/shop" component={ShopPage} />
           <PrivateRoute path="/product/:productSlug" component={ProductPage} />
-          <PrivateRoute exact path="/checkout" component={CheckoutPage} />
+          <PrivateRoute exact path="/checkout" component={CartPreviewPage} />
         </Switch>
       </div>
     );

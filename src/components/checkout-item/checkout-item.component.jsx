@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import config from '../../config/config.js';
@@ -11,37 +11,33 @@ import './checkout-item.styles.scss';
 const CheckoutItem = ({ cartItem, updateCartLineItem, removeCartLineItem }) => {
   const { id, product, price, discountPerItem, quantity, lineTotal } = cartItem;
   const { name, assets } = product;
-  const firstImageUrl = assets[0]
-    ? config.serverHost + assets[0].path
-    : null;
+  const firstImageUrl = assets[0] ? config.serverHost + assets[0].path : null;
+  const [qty, setQty] = useState(quantity);
 
   return (
-    <div className="checkout-item">
-      <div className="image-container">
-        <img src={firstImageUrl} alt="item" />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        {/* <div className="arrow" onClick={updateCartLineItem(id, quantity - 1)}> */}
-        <div
-          className="arrow"
-          onClick={() => updateCartLineItem(id, quantity - 1)}
-        >
-          &#10094;
-        </div>
-        <span className="value">{quantity}</span>
-        {/* <div className="arrow" onClick={updateCartLineItem(id, quantity + 1)}> */}
-        <div
-          className="arrow"
-          onClick={() => updateCartLineItem(id, quantity + 1)}
-        >
-          &#10095;
-        </div>
-      </span>
-      <span className="price">{price}</span>
-      {/* <div className="remove-button" onClick={removeCartLineItem(id)}> */}
-      <div className="remove-button" onClick={() => removeCartLineItem(id)}>
-        &#10005;
+    <div className="product">
+      <img src={firstImageUrl} alt="item" />
+      <div className="product-info">
+        <h3 className="product-name">{name}</h3>
+        <h4 className="product-price">{price}</h4>
+        <p className="product-quantity">
+          Quantity:{' '}
+          <input
+            value={qty}
+            name=""
+            type="number"
+            onChange={(e) => {
+              setQty(e.target.value);
+              updateCartLineItem(id, e.target.value);
+            }}
+          ></input>
+        </p>
+        <p className="product-remove">
+          <i className="fa fa-trash" aria-hidden={'true'}></i>
+          <span className="remove" onClick={() => removeCartLineItem(id)}>
+            Remove
+          </span>
+        </p>
       </div>
     </div>
   );
