@@ -26,23 +26,23 @@ const slice = createSlice({
       products.loading = false;
     },
 
-    // action => action handler
-    productAdded: (products, action) => {
-      products.list.push(action.payload);
-    },
+    // // action => action handler
+    // productAdded: (products, action) => {
+    //   products.list.push(action.payload);
+    // },
 
-    productUpdated: (products, action) => {
-      const index = products.list.findIndex(
-        (product) => product.id === action.payload.id
-      );
-      products.list[index] = action.payload;
-    },
+    // productUpdated: (products, action) => {
+    //   const index = products.list.findIndex(
+    //     (product) => product.id === action.payload.id
+    //   );
+    //   products.list[index] = action.payload;
+    // },
 
-    productDeleted: (products, action) => {
-      products.list = products.list.filter(
-        (product) => product.id !== action.payload.id
-      );
-    },
+    // productDeleted: (products, action) => {
+    //   products.list = products.list.filter(
+    //     (product) => product.id !== action.payload.id
+    //   );
+    // },
   },
 });
 
@@ -51,9 +51,9 @@ export const {
   productsReceived,
   productsRequestFailed,
 
-  productAdded,
-  productUpdated,
-  productDeleted,
+  // productAdded,
+  // productUpdated,
+  // productDeleted,
 } = slice.actions;
 export default slice.reducer;
 
@@ -83,41 +83,41 @@ export const loadProducts = (limit, page) => (dispatch, getState) => {
   );
 };
 
-export const addProduct = (product) => (dispatch, getState) => {
-  return dispatch(
-    apiCallBegan({
-      url,
-      method: 'POST',
-      data: product,
-      headers: { ...tokenConfigHeader(getState) },
-      onSuccess: productAdded.type,
-    })
-  );
-};
+// export const addProduct = (product) => (dispatch, getState) => {
+//   return dispatch(
+//     apiCallBegan({
+//       url,
+//       method: 'POST',
+//       data: product,
+//       headers: { ...tokenConfigHeader(getState) },
+//       onSuccess: productAdded.type,
+//     })
+//   );
+// };
 
-export const updateProduct =
-  (productId, updateBody) => (dispatch, getState) => {
-    return dispatch(
-      apiCallBegan({
-        url: url + '/' + productId,
-        method: 'PATCH',
-        data: updateBody,
-        headers: { ...tokenConfigHeader(getState) },
-        onSuccess: productUpdated.type,
-      })
-    );
-  };
+// export const updateProduct =
+//   (productId, updateBody) => (dispatch, getState) => {
+//     return dispatch(
+//       apiCallBegan({
+//         url: url + '/' + productId,
+//         method: 'PATCH',
+//         data: updateBody,
+//         headers: { ...tokenConfigHeader(getState) },
+//         onSuccess: productUpdated.type,
+//       })
+//     );
+//   };
 
-export const deleteProduct = (productId) => (dispatch, getState) => {
-  return dispatch(
-    apiCallBegan({
-      url: url + '/' + productId,
-      method: 'DELETE',
-      headers: { ...tokenConfigHeader(getState) },
-      onSuccess: productDeleted.type,
-    })
-  );
-};
+// export const deleteProduct = (productId) => (dispatch, getState) => {
+//   return dispatch(
+//     apiCallBegan({
+//       url: url + '/' + productId,
+//       method: 'DELETE',
+//       headers: { ...tokenConfigHeader(getState) },
+//       onSuccess: productDeleted.type,
+//     })
+//   );
+// };
 
 // Selector
 

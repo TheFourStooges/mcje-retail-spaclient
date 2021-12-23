@@ -26,23 +26,23 @@ const slice = createSlice({
       categories.loading = false;
     },
 
-    // action => action handler
-    categoryAdded: (categories, action) => {
-      categories.list.push(action.payload);
-    },
+    // // action => action handler
+    // categoryAdded: (categories, action) => {
+    //   categories.list.push(action.payload);
+    // },
 
-    categoryUpdated: (categories, action) => {
-      const index = categories.list.findIndex(
-        (category) => category.id === action.payload.id
-      );
-      categories.list[index] = action.payload;
-    },
+    // categoryUpdated: (categories, action) => {
+    //   const index = categories.list.findIndex(
+    //     (category) => category.id === action.payload.id
+    //   );
+    //   categories.list[index] = action.payload;
+    // },
 
-    categoryDeleted: (categories, action) => {
-      categories.list = categories.list.filter(
-        (category) => category.id !== action.payload.id
-      );
-    },
+    // categoryDeleted: (categories, action) => {
+    //   categories.list = categories.list.filter(
+    //     (category) => category.id !== action.payload.id
+    //   );
+    // },
   },
 });
 
@@ -50,10 +50,6 @@ export const {
   categoriesRequested,
   categoriesReceived,
   categoriesRequestFailed,
-
-  categoryAdded,
-  categoryUpdated,
-  categoryDeleted,
 } = slice.actions;
 export default slice.reducer;
 
@@ -72,9 +68,8 @@ const url = '/category';
     apiCallBegan({
       url,
       params: {
-        limit,
-        page,
-        sortBy: 'updatedAt:desc',
+        limit: 20,
+        page: 1,
       },
       onStart: categoriesRequested.type,
       onSuccess: categoriesReceived.type,
@@ -83,41 +78,41 @@ const url = '/category';
   );
 };
 
-export const addCategory = (category) => (dispatch, getState) => {
-  return dispatch(
-    apiCallBegan({
-      url,
-      method: 'POST',
-      data: category,
-      headers: { ...tokenConfigHeader(getState) },
-      onSuccess: categoryAdded.type,
-    })
-  );
-};
+// export const addCategory = (category) => (dispatch, getState) => {
+//   return dispatch(
+//     apiCallBegan({
+//       url,
+//       method: 'POST',
+//       data: category,
+//       headers: { ...tokenConfigHeader(getState) },
+//       onSuccess: categoryAdded.type,
+//     })
+//   );
+// };
 
-export const updateCategory =
-  (categoryId, updateBody) => (dispatch, getState) => {
-    return dispatch(
-      apiCallBegan({
-        url: url + '/' + categoryId,
-        method: 'PATCH',
-        data: updateBody,
-        headers: { ...tokenConfigHeader(getState) },
-        onSuccess: categoryUpdated.type,
-      })
-    );
-  };
+// export const updateCategory =
+//   (categoryId, updateBody) => (dispatch, getState) => {
+//     return dispatch(
+//       apiCallBegan({
+//         url: url + '/' + categoryId,
+//         method: 'PATCH',
+//         data: updateBody,
+//         headers: { ...tokenConfigHeader(getState) },
+//         onSuccess: categoryUpdated.type,
+//       })
+//     );
+//   };
 
-export const deleteCategory = (categoryId) => (dispatch, getState) => {
-  return dispatch(
-    apiCallBegan({
-      url: url + '/' + categoryId,
-      method: 'DELETE',
-      headers: { ...tokenConfigHeader(getState) },
-      onSuccess: categoryDeleted.type,
-    })
-  );
-};
+// export const deleteCategory = (categoryId) => (dispatch, getState) => {
+//   return dispatch(
+//     apiCallBegan({
+//       url: url + '/' + categoryId,
+//       method: 'DELETE',
+//       headers: { ...tokenConfigHeader(getState) },
+//       onSuccess: categoryDeleted.type,
+//     })
+//   );
+// };
 
 
 // Selectors w/ memoization 
