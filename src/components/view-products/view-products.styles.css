@@ -30,6 +30,8 @@ ul.products li img {
 }
 .product-thumb img {
   display: block;
+  max-height: 130px;
+  overflow: hidden;
 }
 ul.products li:hover .product-top .product-thumb img {
   filter: opacity(80%);

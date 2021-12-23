@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import CheckoutPage from './pages/checkout/checkout.component';
+import ProductPage from './pages/product/product.component';
 
 import SignInAndSignUp from './pages/sign-in-sign-up/sign-in-sign-up.component';
 import Header from './components/header/header.component';
@@ -22,10 +23,10 @@ import PrivateRoute from './common/PrivateRoute';
 
 class App extends React.Component {
   componentDidMount() {
-    const loadStuff = async () => {
-      await this.props.loadUser();
-      await this.props.loadCart();
-      await this.props.loadCategories();
+    const loadStuff = () => {
+      this.props.loadUser().then(() => this.props.loadCart()).then(() => this.props.loadCategories());
+      // this.props.loadCart();
+      // this.props.loadCategories();
     };
     loadStuff();
 
@@ -59,6 +60,7 @@ class App extends React.Component {
           <PrivateRoute exact path="/" component={HomePage} />
           <PrivateRoute path="/shop/:categorySlug" component={ShopPage} />
           <PrivateRoute path="/shop" component={ShopPage} />
+          <PrivateRoute path="/product/:productSlug" component={ProductPage} />
           <PrivateRoute exact path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
@@ -68,4 +70,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, { loadCategories, loadUser, loadCart })(App);
+export default connect(mapStateToProps, { loadCategories, loadUser, loadCart })(
+  App
+);

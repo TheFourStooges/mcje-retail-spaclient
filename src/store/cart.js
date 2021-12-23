@@ -25,6 +25,8 @@ const slice = createSlice({
     },
 
     cartRequestFailed: (cart, action) => {
+      cart.cartId = null;
+      localStorage.setItem('cartId', null);
       cart.loading = false;
     },
 

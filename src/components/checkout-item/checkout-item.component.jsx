@@ -10,9 +10,9 @@ import './checkout-item.styles.scss';
 
 const CheckoutItem = ({ cartItem, updateCartLineItem, removeCartLineItem }) => {
   const { id, product, price, discountPerItem, quantity, lineTotal } = cartItem;
-  const { productName, productAssets } = product;
-  const firstImageUrl = productAssets[0]
-    ? config.serverHost + productAssets[0].path
+  const { name, assets } = product;
+  const firstImageUrl = assets[0]
+    ? config.serverHost + assets[0].path
     : null;
 
   return (
@@ -20,18 +20,27 @@ const CheckoutItem = ({ cartItem, updateCartLineItem, removeCartLineItem }) => {
       <div className="image-container">
         <img src={firstImageUrl} alt="item" />
       </div>
-      <span className="name">{productName}</span>
+      <span className="name">{name}</span>
       <span className="quantity">
-        <div className="arrow" onClick={updateCartLineItem(id, quantity - 1)}>
+        {/* <div className="arrow" onClick={updateCartLineItem(id, quantity - 1)}> */}
+        <div
+          className="arrow"
+          onClick={() => updateCartLineItem(id, quantity - 1)}
+        >
           &#10094;
         </div>
         <span className="value">{quantity}</span>
-        <div className="arrow" onClick={updateCartLineItem(id, quantity + 1)}>
+        {/* <div className="arrow" onClick={updateCartLineItem(id, quantity + 1)}> */}
+        <div
+          className="arrow"
+          onClick={() => updateCartLineItem(id, quantity + 1)}
+        >
           &#10095;
         </div>
       </span>
       <span className="price">{price}</span>
-      <div className="remove-button" onClick={removeCartLineItem(id)}>
+      {/* <div className="remove-button" onClick={removeCartLineItem(id)}> */}
+      <div className="remove-button" onClick={() => removeCartLineItem(id)}>
         &#10005;
       </div>
     </div>
