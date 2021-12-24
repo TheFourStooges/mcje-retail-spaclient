@@ -119,7 +119,7 @@ export const captureCheckoutToken = (submitBody) => (dispatch, getState) => {
       data: {
         ...submitBody,
       },
-      onSuccess: cartDeleted.type,
+      onSuccess: checkoutCaptured.type,
       onError: checkoutRequestFailed.type,
     })
   );

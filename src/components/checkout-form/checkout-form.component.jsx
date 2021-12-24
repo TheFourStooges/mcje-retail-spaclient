@@ -45,8 +45,8 @@ const CheckoutForm = ({ submitHandler, onClose }) => {
     cardNumber: Yup.string(),
     cardCvv: Yup.string(),
     cardHolder: Yup.string(),
-    cardExpirationMonth: Yup.number(),
-    cardExpirationYear: Yup.number(),
+    cardExpirationMonth: Yup.string(),
+    cardExpirationYear: Yup.string(),
   });
 
   const {

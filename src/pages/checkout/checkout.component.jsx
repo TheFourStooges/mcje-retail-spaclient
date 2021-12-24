@@ -5,7 +5,9 @@ import {
   loadCheckoutToken,
   updateCheckoutToken,
   captureCheckoutToken,
+  checkoutCaptured,
 } from '../../store/checkout';
+import { cartDeleted } from '../../store/cart';
 import { loadShippingMethods } from '../../store/shippingMethods';
 
 import CheckoutForm from '../../components/checkout-form/checkout-form.component';
@@ -29,6 +31,7 @@ const CheckoutPage = ({
   updateCheckoutToken,
   captureCheckoutToken,
   loadShippingMethods,
+  dispatch,
 }) => {
   useEffect(() => {
     loadCheckoutToken();
@@ -86,7 +89,9 @@ const CheckoutPage = ({
 
     console.log(newBody);
     captureCheckoutToken(newBody);
-    history.push('/');
+    history.go(0);
+    dispatch({ type: checkoutCaptured.type });
+    dispatch({ type: cartDeleted.type });
   };
 
   return (

@@ -16,7 +16,7 @@ const ViewProducts = ({ categoryName, categorySlug, products, addProductToCart }
           const finalImagePath = config.serverHost + firstImagePath;
           // console.log(product);
           return (
-            <li>
+            <li key={id}>
               <div className="product-item">
                 <div className="product-top">
                   <div className="product-thumb">

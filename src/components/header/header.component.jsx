@@ -41,7 +41,7 @@ const Header = ({ authenticated, hidden, logout, sections }) => (
       <CartIcon />
     </div>
     {hidden ? null : <CartDropdown />}
-    <p className="king">&#169 2021</p>
+    {/* <p className="king">&#169 2021</p> */}
   </div>
 );
 
