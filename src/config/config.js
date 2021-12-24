@@ -1,6 +1,6 @@
 const config = {
-  serverHost: 'http://localhost:3000',
-  baseUrl: 'http://localhost:3000/v1',
+  serverHost: 'https://evening-bastion-99993.herokuapp.com',
+  baseUrl: 'https://evening-bastion-99993.herokuapp.com/v1/',
 };
 
 export default config;
