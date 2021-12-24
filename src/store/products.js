@@ -73,8 +73,8 @@ export const loadProducts =
       apiCallBegan({
         url,
         params: {
-          limit: limit || getState().entities.products.meta.limit,
-          page: page || getState().entities.products.meta.page,
+          limit: limit,
+          page: page,
           sortBy: sortBy || 'updatedAt:desc',
           categoryId,
         },

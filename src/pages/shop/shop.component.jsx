@@ -30,7 +30,7 @@ const ShopPage = ({ categories, products, loadCategories, loadProducts }) => {
 
     console.log(categoryId, slug);
 
-    loadProducts(25, 1, categoryId);
+    loadProducts(100, 1, categoryId);
   };
 
   // console.log(categoryId);

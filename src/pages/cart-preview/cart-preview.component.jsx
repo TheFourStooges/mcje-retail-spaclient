@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 // import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
@@ -26,7 +27,7 @@ const CartPreviewPage = ({ cartItems, subtotal }) => {
             <span>Subtotal</span>
             <span>{subtotal}</span>
           </p>
-          <a href='#'>Proceed to Checkout</a>
+          <Link to="/checkout">Proceed to Checkout</Link>
         </div>
       </div>
     </div>

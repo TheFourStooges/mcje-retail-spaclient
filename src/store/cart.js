@@ -76,9 +76,9 @@ const url = '/cart';
  */
 export const loadCart = () => (dispatch, getState) => {
   const existingCartId = getState().cart.cartId;
-  console.log(existingCartId, 'existingCartId')
+  console.log(existingCartId, typeof existingCartId, 'existingCartId')
 
-  if (existingCartId) {
+  if (existingCartId && existingCartId !== 'null') {
     return dispatch(
       apiCallBegan({
         url: url + '/' + existingCartId,
