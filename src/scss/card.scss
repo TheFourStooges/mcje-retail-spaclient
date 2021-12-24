@@ -1,0 +1,31 @@
+.card {
+  margin: 8px 0px;
+  padding: 1.5em 1em;
+
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+
+    .card__header__title {
+      display: inline;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 900;
+      padding-left: 0.25rem;
+      padding-bottom: 0.25rem;
+      border-bottom-width: 1px;
+      border-color: rgba(214,228,247,1);
+    }
+
+    * {
+      display: 'inline'
+    }
+  }
+
+  .primary-text {
+    font-weight: bold;
+    margin-bottom: 0rem;
+  }
+}
